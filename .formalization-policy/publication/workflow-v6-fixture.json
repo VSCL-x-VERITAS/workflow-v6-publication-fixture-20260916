@@ -17,6 +17,7 @@
   "poll_seconds": 5,
   "post_merge_workflows": [
     {
+      "check": "Publication fixture required check",
       "events": [
         "push"
       ],
@@ -25,6 +26,7 @@
   ],
   "pre_merge_workflows": [
     {
+      "check": "Publication fixture required check",
       "events": [
         "merge_group"
       ],
