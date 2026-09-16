@@ -1,0 +1,40 @@
+{
+  "automatic_enabled": true,
+  "backend": "github-merge-queue",
+  "book_id": "workflow-v6-fixture",
+  "candidate_ref_template": "candidate/{book}/{unit}/{request}",
+  "checkpoint_ref_template": "checkpoint/{book}/{unit}/{session}-{utc}",
+  "local_validations": [
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "name": "git-diff-check"
+    }
+  ],
+  "poll_seconds": 5,
+  "post_merge_workflows": [
+    {
+      "events": [
+        "push"
+      ],
+      "path": ".github/workflows/publication.yml"
+    }
+  ],
+  "pre_merge_workflows": [
+    {
+      "events": [
+        "merge_group"
+      ],
+      "path": ".github/workflows/publication.yml"
+    }
+  ],
+  "remote": "origin",
+  "repository": "VSCL-x-VERITAS/workflow-v6-publication-fixture-20260916",
+  "schema_version": 1,
+  "stable_branch": "main",
+  "timeout_seconds": 900,
+  "unit_kind": "unit"
+}

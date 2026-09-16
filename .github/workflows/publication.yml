@@ -1,0 +1,25 @@
+name: Workflow v6 publication fixture
+
+"on":
+  pull_request:
+  merge_group:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  publication-fixture:
+    name: Publication fixture required check
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Check out exact tested commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Enforce fixture verdict
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat trial-status.txt)" = green
