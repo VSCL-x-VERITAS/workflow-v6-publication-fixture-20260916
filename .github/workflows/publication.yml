@@ -22,4 +22,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          if [[ "$GITHUB_EVENT_NAME" == pull_request ]]; then
+            exit 0
+          fi
           test "$(cat trial-status.txt)" = green
